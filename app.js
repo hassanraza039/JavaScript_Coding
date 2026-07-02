@@ -171,7 +171,7 @@ console.log(formatdDate);
 console.log(new Date(2024, 11, 25));
 function Calculate(a,b,operation){
 if(operation === '+'){
-
+    return a + b;
 }else if(operation === '-'){
    return a - b;
 }else if(operation === '*'){
