@@ -135,3 +135,55 @@ console.log(Math.floor(nums));
 console.log(Math.ceil(nums));
 // Format to show exactly 4 decimal places
 console.log(nums.toFixed(4));
+// Question 13: Random Number Generation
+// Generate:
+// A random integer between 1 and 100 (inclusive)
+console.log(Math.floor(Math.random()*100)+1);
+// A random decimal between 0 and 1 with 3 decimal places
+console.log(Math.random().toFixed(3));
+// A random number between 50 and 75 (inclusive)
+console.log(Math.floor(Math.random() * 26) + 50);
+// Question 14: Type Conversion
+// Perform these conversions:
+// Convert string "123" to number
+let num1 = Number("123");
+console.log(num1,typeof num1);
+// Convert string "45.67" to decimal (float)
+let num2 = parseFloat("123.456");
+console.log(num2);
+let num3 = (123).toString();
+console.log(num3);
+// Check the type of "true" after converting to boolean
+let check = Boolean("true");
+console.log(check,typeof check);
+// Question 15: Date and Time Operations
+// Create a Date object for the current time and:
+// Extract the year, month (0-11), and day
+let date = new Date();
+console.log(new Date().getFullYear(),new Date().getMonth(),new Date().getDay());
+// Get the hours in 24-hour format
+console.log(new Date().getHours());
+// Format it as "YYYY-MM-DD"
+let today = new Date();
+let formatdDate =today.getFullYear() + "-" +(today.getMonth() + 1) + "-" +today.getDate();
+console.log(formatdDate);
+// Create a specific date for December 25, 2024
+console.log(new Date(2024, 11, 25));
+function Calculate(a,b,operation){
+if(operation === '+'){
+
+}else if(operation === '-'){
+   return a - b;
+}else if(operation === '*'){
+    return a * b;
+}else if(operation === '/'){
+     return a / b;
+}else{
+    console.log('invalid operator');
+    
+}
+}
+let input1 = +prompt('Enter First number');
+let input2 = +prompt('Enter Second number');
+let operation = prompt('which Operation want do you perform(+,-,*,/)?','+');
+console.log(Calculate(input1,input2,operation));
