@@ -43,7 +43,7 @@ if (temperature > 30) {
 // Check if 15 is strictly equal to "15"
 console.log(15 === "15");
 // Check if 20 is greater than 15 AND less than 25
-console.log(20 > 15) < 25;
+console.log(20 > 15 && 20 < 25);
 // Check if 10 is not equal to 10 OR 5 is greater than 3
 console.log(10 != 10 || 5 > 3);
 // Question 6: Array Manipulation - Basics
@@ -188,11 +188,11 @@ let operation = prompt('which Operation want do you perform(+,-,*,/)?', '+');
 console.log(Calculate(input1, input2, operation));
 // Question 17: Function - Local vs Global Variables
 let globalCounter = 0;
-function incrementCounter(){
+function incrementCounter() {
     let globalCounter = 5;
     globalCounter++;
-    console.log('local counter:',globalCounter);
-    window.globalCounter++;
+    console.log('local counter:', globalCounter);
+    globalCounter++;
     console.log(globalCounter);
 }
 incrementCounter();
@@ -229,7 +229,7 @@ switch (day) {
 }
 // Question 19: while Loop - Countdown
 let count = 10;
-while(count>=1){
+while (count >= 1) {
     console.log(count);
     count--;
 }
@@ -237,53 +237,140 @@ console.log('blast off');
 // Also calculate the factorial of 5 using a while loop.
 let value = 5;
 let factorial = 1;
-while(value >=1){
-    factorial= factorial*value;
+while (value >= 1) {
+    factorial = factorial * value;
     value--;
 }
-console.log('factorial of 5 is :',factorial);
+console.log('factorial of 5 is :', factorial);
 // Question 20: do...while Loop - User Input Simulation
 let enteredPassword = "";
 let attempt = 0;
-do{
+do {
     attempt++;
     enteredPassword = prompt('Enter password');
-}while(enteredPassword != 'secret123' && attempt < 5);
-if(enteredPassword === 'secret123'){
+} while (enteredPassword != 'secret123' && attempt < 5);
+if (enteredPassword === 'secret123') {
     console.log('successful');
-}else{
+} else {
     console.log('not success');
-    
+
 }
 // Question 21: Array Methods with for Loop  
 // Given numbers = [12, 45, 78, 23, 56, 89, 34]:
 // Use a for loop to find the maximum value
 let numbers = [12, 45, 78, 23, 56, 89, 34];
 let max = numbers[0];
-for(let i = 0; i < numbers.length; i++){
-    if(numbers[i]>max){
-       max =numbers[i];
+for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] > max) {
+        max = numbers[i];
     }
 }
-console.log('max num :',max);
+console.log('max num :', max);
 // Use a for loop to calculate the average
 let Sum = 0;
-for(let i =0;i<numbers.length;i++){
-    sum += numbers[i];
+for (let i = 0; i < numbers.length; i++) {
+    Sum += numbers[i];
 }
-let average = sum/numbers.length;
-console.log('avarege is :',average);
+let average = sum / numbers.length;
+console.log('avarege is :', average);
 // Create a new array with only numbers greater than 50
 let newNum = [];
-for(let i = 0; i<numbers.length;i++){
-    if(numbers[i]>50){
-    newNum.push(numbers[i]);
+for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] > 50) {
+        newNum.push(numbers[i]);
     }
 }
-console.log('grrater than 50 :',newNum);
+console.log('grrater than 50 :', newNum);
 // Reverse the array without using reverse() method
 let reversed = [];
 for (let i = 0; i < numbers.length; i++) {
     reversed.unshift(numbers[i]);
 }
 console.log(reversed);
+// Question 22: Event Handling Simulation
+// Create a function handleClick that:
+// Gets a value from an input field with id "username"
+// Checks if it's empty and shows an alert if so
+// Otherwise, displays "Welcome, [username]!" in a paragraph with id "greeting"
+// Resets the input field after greeting
+const handleClick = () => {
+    let username = document.getElementById('username').value;
+    if (username === "") {
+        alert('Please enter name')
+    } else {
+        document.getElementById('greeting').innerHTML = "Welcome :" + username;
+        document.getElementById('username').value = "";
+    }
+}
+// Question 23: Form Validation Function
+// Write a function validateForm that:
+// Takes email and password as parameters
+// Returns true if email contains "@" and password length ≥ 8
+// Otherwise returns false with specific error messages
+// Test with multiple test cases
+const validate = (email, password) => {
+    if (!email.includes('@')) {
+        return 'email must contain @';
+    }
+        if (password.length <= 8) {
+            return 'password must contain 8 character';
+        }
+        return true;
+    };
+console.log(validate('haris@123', 12345678));
+console.log(validate('haris123', 12345678));
+console.log(validate('haris@123', 1234567));
+console.log(validate('haris@123', 'haris123'));
+// Question 24: Temperature Converter
+// Create a function convertTemperature that:
+// Takes a temperature and a unit ("C" or "F") as parameters
+// Converts Celsius to Fahrenheit: (C × 9/5) + 32
+// Converts Fahrenheit to Celsius: (F - 32) × 5/9
+// Returns the converted value with 1 decimal place
+function convertTemperature(temp, unit) {
+    if (unit === "C") {
+        let result = (temp * 9 / 5) + 32;
+        return result.toFixed(1);
+    } else if (unit === "F") {
+        let result = (temp - 32) * 5 / 9;
+        return result.toFixed(1);
+    } else {
+        return 'invalid unit';
+    }
+}
+console.log(convertTemperature(25, "C"));
+console.log(convertTemperature(77, "F"));
+// Question 25: Shopping Cart Array Operations
+// Create an array cart = [] and write these functions:
+let cart = [];
+// addItem(name, price): Adds item object to cart
+function addItem(name, price) {
+    cart.push({ name: name, price: price });
+}
+// removeItem(name): Removes item by name
+function removeItem(name) {
+    cart = cart.filter(item => item.name !== name);
+}
+// calculateTotal(): Returns sum of all item prices
+function calculateTotal() {
+    let total = 0;
+    for (let i = 0; i < cart.length; i++) {
+        total += cart[i].price;
+    }
+    return total;
+}
+
+// applyDiscount(percent): Applies discount to total
+function applyDiscount(percent) {
+    let total = calculateTotal();
+    let discount = (total * percent) / 100;
+    return total - discount;
+}
+// listItems(): Returns array of just item names
+function listItems() {
+    let names = [];
+    for (let i = 0; i < cart.length; i++) {
+        names.push(cart[i].name);
+    }
+    return names;
+}
